@@ -1,0 +1,43 @@
+<ion-view view-title='Seacoast Moms Blog' hide-back-button=''>
+  <ion-content>
+
+    <!-- news feed -->
+
+    <div class="item item-avatar bg-white m5">
+		    	<img src="img/smb.jpg">
+		      <h4 class="fw500 m0 dark pt5">Seacoast Moms Blog</h4>
+			  <h4 class="fw300 m0 dark">PASSIONATE ABOUT THE COMMUNITY AND THE MOMS WHO LIVE HERE</h4>
+		    </div>
+
+	<div class="pt20 pb20"> <!-- news feed list for selected source -->
+		<div class="list" ng-repeat="item in posts">
+		    <a class="item bg-white" ng-click="openUrl(item.link)">
+          <div class="list-item">
+            <!-- <span class="list-content" ng-bind-html="item.content | filter:img">{{item.content | filter:img}}</span> -->
+            <div class="list-content">
+              <div class="loading" ng-bind-html="item.content">{{item.content}}</div>
+            </div>
+            <h2 class="fw500 m0 dark pt5">{{item.title}}</h2>
+              <!-- <h4 class="fw300 m0 dark">{{item.contentSnippet}}</h4> -->
+            <h4 class="wp-list fw300 m0 dark" ng-bind-html="item.contentSnippet">{{item.contentSnippet}}</h4>
+    			  <div class="row p0">
+    			  	<div class="col pl0">
+    			  		<p class="fw300 m0 dark">{{item.author}}</p>
+    			  	</div>
+    			  	<div class="col pr0 text-right">
+    			  		<p class="fw300 m0 dark">{{item.publishedDate | limitTo:16}}</p>
+    			  	</div>
+    			  </div>
+          </div>
+		    </a>
+		</div>
+	</div>
+
+	<div class="he50"></div>
+
+  </ion-content>
+</ion-view>
+
+<script>
+  $('.list-content').find('p:first').show()
+</script>

@@ -1,0 +1,23 @@
+<ion-view view-title='Diagnostic Ultrasound Suite'>
+
+  <ion-content>
+
+	<div class="he5"></div>
+
+	<div class="">
+    <a class="col card text-center p20" ng-repeat="user in usersFroFileTransfer | filter:query | filter: {'email' : user} | filter: {'active' : 'true'}" href="#/app/readfolder/{{user.$id}}">
+      <img src="img/svg/folder.svg" style="max-width:70px;"></img>
+			<h4 class="fw300 font-md">My Files</h4>
+      <h4 class="fw300 font-md">{{user.fname}} {{user.lname}}</h4>
+			<!-- <p class="dark">Use the elements and plugins to create the awesomeness</p> -->
+
+		</a>
+    <!-- <h3 style="font-size:16px;padding:20% 20px;" ng-show="usersFroFileTransfer.length === 0">You do not have any folders from the Diagnostic Ultrasound Suite.</h3> -->
+	</div>
+
+	<!-- footer -->
+
+
+
+  </ion-content>
+</ion-view>

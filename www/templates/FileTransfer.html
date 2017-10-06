@@ -1,0 +1,35 @@
+<ion-view view-title='DUS File Transfer' hide-back-button=''>
+  <ion-content ng-show="userProfile.dus === true">
+    <!-- <a class="button button-block button-positive" href="#/app/add">
+      Ask a Question
+    </a> -->
+    <!-- news sources -->
+
+    <div class="pt20 pb20">
+      <h3 class="dark fw300 m0">Share files with users</h3>
+      <p class="dark fw900 mb20 up">Only admins can see this screen.</p>
+      <button class="btn add-button p20" ui-sref="app.addfolder">Add Folder</button>
+      <div class="item item-input-inset filters">
+        <label class="item item-input"  style="width:100%;">
+          <div class="input-label">
+            Search for a Folder
+          </div>
+          <input type="text" placeholder="Enter a name or email address" ng-model="query">
+        </label>
+      </div>
+
+      <div class="list content">
+          <a class="item item-avatar bg-white m5" ng-repeat="user in usersFroFileTransfer | filter:query" href="#/app/editfolder/{{user.$id}}">
+            <div class=""><i class="folder-icon icon ion-android-folder fa-2x"></i></div>
+            <h4 class="fw500 m0 dark pt5"><b>{{user.fname}} {{user.lname}}</b></h4>
+            <h4 class="fw500 m0 dark pt5">{{user.email}}</h4>
+            <i class="fa fa-check-square {{user.active}}" aria-hidden="true"></i>
+          </a>
+      </div>
+
+    </div>
+
+    <div class="he50"></div>
+
+  </ion-content>
+</ion-view>

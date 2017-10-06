@@ -1,0 +1,8 @@
+sbfc.keystore
+uuid
+GoogleService-info.plist
+not-in-publish
+my-release-key.keystore
+node_modules
+platforms
+plugins

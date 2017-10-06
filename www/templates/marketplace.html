@@ -1,0 +1,38 @@
+<ion-view view-title='Marketplace' hide-back-button=''>
+  <ion-content>
+    <!-- <a class="button button-block button-positive" href="#/app/add">
+      Ask a Question
+    </a> -->
+    <!-- news sources -->
+
+    <div ng-repeat="item in articles.slice().reverse() | filter : getItemsFromThePast(item) | orderBy: 'publish_date':true | filter:{ published: 'true' , category: 'marketplace' } track by $index" class="" style="width:50%;display:inline-block; vertical-align: text-top; padding:0 auto;margin:0 auto;">
+      <a href="#/app/articleslist/{{item.$id}}">
+        <div class="marketplace-tile" id="">
+        <!-- <ion-item id="">
+          <span class="item-note" ng-bind="item.publish_date | date : 'MMM dd, yy'"></span>
+        </ion-item> -->
+        <div style="margin: 0px; text-align: center;">
+          <img class="loading" ng-src="{{item.img}}" style="width:100%;"></img>
+          <span class="wrapping-list" id="">
+            {{item.title}}
+            <!-- <i class="icon ion-chevron-right"></i> -->
+          </span>
+        </div>
+
+      </a>
+    </div>
+  </div>
+</a>
+    <!-- <div class="bg-light pt20 pb20">
+		<h4 class="fw300 m0 p10 pt20">The Marketplace</h4>
+		<div class="list">
+		    <a ng-repeat="item in articles | filter:{ published: 'true' , category: 'marketplace' }" href="#/app/articleslist/{{item.$id}}">
+		    	<img class="card p5 col-xs-6 m0" ng-src="{{item.img}}">
+		    </a>
+		</div>
+	</div> -->
+
+	<div class="he50"></div>
+
+  </ion-content>
+</ion-view>

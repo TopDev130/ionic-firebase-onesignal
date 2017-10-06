@@ -1,0 +1,37 @@
+<ion-view view-title="Home" hide-nav-bar="true">
+
+  <!-- animated background -->
+  <div class="img-cover z-lo">
+      <!-- <img src="img/animated-bg.gif"> -->
+  </div>
+
+  <ion-content>
+
+	<div class="relative z-hi text-center pt70 ml40 mr40 pb70">
+		<!-- <h1 class="fw300 m0 light">Welcome</h1> -->
+		<h4 class="fw300 m0 light"><img src="img/logo.png" style="max-width:500px; width:100%;"></h4>
+    <div>
+    <div class="list list-inset ">
+          <label class="item item-input input-transparent">
+              <input type="email" placeholder="Email" ng-model="email">
+          </label>
+          <label class="item item-input input-transparent mt10">
+              <input type="password" placeholder="Password" ng-model="password">
+          </label>
+      </div>
+      <div class="p10">
+        <button class="button button-block button-energized up" ng-click="login(email, password)">Login</button>
+        <p class="dark mt30">For the first time here?</p>
+        <a class="button button-outline button-block button-dark up" href="#/app/register">Register</a>
+        <a class="button button-outline button-block button-clear button-energized up" href="#/app/forgot">Forgot password</a>
+          <!-- <a class="button button-block button-clear button-light up" href="#/app/home">Skip login</a> -->
+      </div>
+    </div>
+
+	</div>
+
+
+
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,187 @@
+<ion-side-menus enable-menu-with-back-views="true">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bg-positive shadow-small">
+      <ion-nav-back-button></ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <i ng-hide="isActive" class="ti-align-justify text-black font-xl p10" menu-toggle="left" ng-click="getUserRoles(userUid)"></i>
+        <i ng-show="isActive" class="ti-close text-black font-xl p10" menu-toggle="left"></i>
+      </ion-nav-buttons>
+
+      <ion-nav-buttons side="right">
+        <i ng-hide="isActive" class="ti-bell text-black font-xl p10" menu-toggle="right"><div ng-hide="$root.notifications.length === 0" class="badge pull-right">{{$root.notifications.length}}</div></i>
+        <i ng-show="isActive" class="ti-close text-black font-xl p10" menu-toggle="right"></i>
+      </ion-nav-buttons>
+
+      <!-- <ion-tabs class="tabs-balanced tabs-icon-top" ng-show="user != 'Anonymous'">
+
+        <ion-tab title="Home" icon="ion-home" href="#/app/home">
+          <ion-nav-view name="home-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="Marketplace" icon="ion-ios-information" href="#/app/marketplace">
+          <ion-nav-view name="marketplace-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="ask" icon="ion-help" href="#/app/ask-an-expert">
+          <ion-nav-view name="ask-tab"></ion-nav-view>
+        </ion-tab>
+
+      </ion-tabs> -->
+
+      <ion-tabs class="tabs-positive tabs-icon-top" ng-show="user != 'Anonymous'">
+        <ion-tab title="Home" ui-sref="app.home" icon-on="ion-ios-home" icon-off="ion-ios-home-outline" ><ion-nav-view name="home-tab"></ion-nav-view></ion-tab>
+        <ion-tab title="Feed" ui-sref="app.feed" icon-on="ion-ios-list" icon-off="ion-ios-list-outline"><ion-nav-view name="feed-tab"></ion-nav-view></ion-tab>
+        <ion-tab class="logo-tab"></ion-tab>
+        <ion-tab title="MAC" ui-sref="app.macphotography" hidden="true"></ion-tab>
+        <ion-tab title="DUS" ui-sref="app.dus" hidden="true"></ion-tab>
+        <ion-tab title="users" ui-sref="app.users" hidden="true"></ion-tab>
+        <ion-tab title="contact" ui-sref="app.contact" hidden="true"></ion-tab>
+        <ion-tab title="ask-an-expert" ui-sref="app.ask-an-expert" hidden="true"></ion-tab>
+        <ion-tab title="maps" ui-sref="app.maps" hidden="true"></ion-tab>
+        <ion-tab title="newslist" ui-sref="app.newslist" hidden="true"></ion-tab>
+        <ion-tab title="calendar" ui-sref="app.calendar" hidden="true"></ion-tab>
+        <ion-tab title="Marketplace" icon-on="ion-ios-cart" icon-off="ion-ios-cart-outline" ui-sref="app.marketplace"></ion-tab>
+        <ion-tab title="Profile" icon-on="ion-ios-person" icon-off="ion-ios-person-outline" ui-sref="app.profile" ng-click="getUserRoles(userUid); goToProfile(userUid)"></ion-tab>
+      </ion-tabs>
+
+    </ion-nav-bar>
+
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" class="bg-light">
+    <ion-header-bar class="bg-light row row-center">
+    <!-- <div class="col col-20">
+      <img src="img/user.jpg" width="35" height="35" class="round inline border-xs-white ml10 mt5">
+    </div> -->
+    <div class="col">
+      <h5 class="light fw300 pl10 m0 inline energized">{{user}}</h5>
+    </div>
+    <div class="col text-right">
+      <!-- <a class="ti-settings light font-xl pr10 energized" ng-click="getUserProfile(userUid)" ng-show="user != 'Anonymous'" menu-close></a> -->
+      <!-- <a class="ti-share-alt light font-xl pr20" ng-click="logout()" ng-show="user != 'Anonymous'"></a> -->
+      <a class="ti-share light font-xl pr10 energized" href="#/app/login" ng-show="user == 'Anonymous'" menu-close></a>
+    </div>
+
+    </ion-header-bar>
+    <ion-content class="">
+      <ion-list>
+        <ion-item menu-close href="#/app/home" class="">
+          Home
+        </ion-item>
+        <!-- <ion-item menu-close href="#/app/news" class="">
+          News Feed
+        </ion-item> -->
+        {{userUid.expert}}
+        <ion-item menu-close ui-sref="app.marketplace" class="">
+          Marketplace
+        </ion-item>
+        <ion-item menu-close href="#/app/ask-an-expert" class="">
+          Ask an Expert
+        </ion-item>
+        <ion-item menu-close href="#/app/home/macphotography" class="">
+          MAC Photography
+        </ion-item>
+        <ion-item menu-close href="#/app/newslist/2" class="">
+          Seacoast Moms Blog
+        </ion-item>
+        <ion-item menu-close href="#/app/dus" class="">
+          Diagnostic Ultrasound Suite
+        </ion-item>
+        <ion-item menu-close href="#/app/home/maps" class="">
+          Location
+        </ion-item>
+        <ion-item menu-close href="#" class="" onclick="window.open('https://calendar.google.com/calendar/embed?showTitle=0&amp;showDate=0&amp;showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=seacoastbirthandfamily%40gmail.com&amp;color=%231B887A&amp;ctz=America%2FNew_York', '_blank', 'location=no'); return false;">
+          Calendar
+        </ion-item>
+        <ion-item menu-close href="#/app/home/contact" class="">
+          Contact
+        </ion-item>
+        <!-- <ion-item menu-close href="#/app/admob" class="">
+          Ads
+        </ion-item> -->
+        <!-- <ion-item menu-close href="#/app/add" class=" hidden-admin">
+          Post
+        </ion-item> -->
+        <ion-item menu-close href="#/app/questions" class="" ng-show="userProfile.expert === true">
+          Submitted Questions
+        </ion-item>
+        <ion-item menu-close href="#/app/allcontent" class="" ng-show="userProfile.admin === true || userProfile.expert === true">
+          Content Management
+        </ion-item>
+        <ion-item menu-close href="#/app/filetransfer" class=""  ng-show="userProfile.dus === true">
+          File Transfer
+        </ion-item>
+        <ion-item menu-close href="#/app/users" class=""  ng-show="userProfile.admin === true">
+          User Management
+        </ion-item>
+        <ion-item menu-close ng-click="logout()" ng-show="user != 'Anonymous'" class="">
+          Log Out
+        </ion-item>
+        <!-- <ion-item menu-close href="#/app/login" ng-show="user == 'Anonymous'" class="">
+          Log In
+        </ion-item> -->
+      </ion-list>
+      <div class="he50"></div>
+    </ion-content>
+
+    <div class="bar bar-footer bg-light">
+      <div class="title font-xs text-left dark" style="z-index:999;">Copyright <span class="fw900 energized">Seacoast Birth & Family Connection</span> 2017</div>
+    </div>
+  </ion-side-menu>
+
+  <ion-side-menu side="right" class="bg-light">
+    <ion-header-bar class="bg-dark">
+      <h5 class="light fw300 pl10">Notifications</h5>
+      <div class="w100 pt10 pr10 text-right">
+        <i class="ti-trash light font-xl ml20" ng-click="data.showDelete = !data.showDelete; data.showReorder = false"></i>
+        <!-- <i class="ti-layout-list-thumb light font-xl ml20" ng-click="data.showDelete = true; data.showReorder = !data.showReorder"></i> -->
+      </div>
+    </ion-header-bar>
+    <ion-content class="bg-light">
+      <ion-list show-delete="!data.showDelete" show-reorder="!data.showReorder" class="disable-pointer-events">
+        <!-- <ion-item item="item" class="item-remove-animate item-avatar ">
+          <h3 class="light m0 fw300">Hello this is a title</h3>
+          <p class="light m0" style="white-space:normal !important;">this is a body this is a body this is a body this is a body this is a body this is a body </p>
+          <ion-delete-button class="ion-minus-circled"
+                             ng-click="onItemDelete(item)">
+          </ion-delete-button>
+          <ion-option-button class="button-energized"
+                             ng-click="onItemDelete(item)">
+            <i class="ti-trash font-xxl"></i>
+          </ion-option-button>
+        </ion-item> -->
+        <ion-item ng-repeat="item in $root.notifications" item="item" class="item-remove-animate item-avatar ">
+          <!-- <img src="img/users/{{item.img}}"> -->
+          <h3 class="light m0 fw300" style="white-space:normal !important;"><b>{{item.title}}</b></h3>
+          <p class="light m0" style="white-space:normal !important;">{{item.body}}</p>
+
+          <ion-delete-button class="ion-minus-circled"
+                             ng-click="onItemDelete(item)">
+          </ion-delete-button>
+          <ion-option-button class="button-energized"
+                             ng-click="onItemDelete(item)">
+            <i class="ti-trash font-xxl"></i>
+          </ion-option-button>
+          <!-- <ion-option-button class="button-positive"
+                             ng-click="edit(item)">
+            <i class="ti-ink-pen font-xxl"></i>
+          </ion-option-button>
+          <ion-option-button class="button-calm"
+                             ng-click="share(item)">
+            <i class="ti-share font-xxl"></i>
+          </ion-option-button> -->
+          <!-- <ion-reorder-button class="ion-navicon" on-reorder="moveItem(item, $fromIndex, $toIndex)"></ion-reorder-button> -->
+          <hr>
+        </ion-item>
+
+      </ion-list>
+      <div class="he50"></div>
+    </ion-content>
+    <div class="bar bar-footer bg-dark">
+      <div class="title font-xs text-left dark" style="z-index:999; background-color:#fff;">Copyright <span class="fw900 energized">Seacoast Birth %26 Family Connection</span> 2017</div>
+    </div>
+  </ion-side-menu>
+
+</ion-side-menus>
